@@ -23,7 +23,7 @@ const options = {
       stack: '2',
     //   hoverBackgroundColor: 'rgba(255,99,132,0.4)',
     //   hoverBorderColor: 'rgba(255,99,132,1)',
-      data: [10]
+      data: [Math.floor((Math.random() * 10) + 1)]
     },
     {
       label: 'Query',
@@ -33,7 +33,7 @@ const options = {
       stack: '2',
     //   hoverBackgroundColor: 'rgba(155,49,12,0.4)',
     //   hoverBorderColor: 'rgba(155,59,12,1)',
-      data: [20]
+      data: [Math.floor((Math.random() * 10) + 1)]
     },
     {
       label: 'Lucene',
@@ -43,7 +43,7 @@ const options = {
       stack: '2',
     //   hoverBackgroundColor: 'rgba(155,49,12,0.4)',
       hoverBorderColor: 'rgba(155,59,12,1)',
-      data: [20]
+      data: [Math.floor((Math.random() * 10) + 1)]
     }
   ]
  }
@@ -51,7 +51,7 @@ const options = {
 class BarChart extends React.Component {
     constructor(props) {
       super(props);
-      this.data = data;
+      this.data = this.props.data;
     }
 
     render() {

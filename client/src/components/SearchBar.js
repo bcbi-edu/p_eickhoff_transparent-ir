@@ -6,7 +6,7 @@ class SearchBar extends React.Component {
     super(props);
     this.state = {
       value: '',
-      results: [{"id": 1, "title": "Title", "name": "yo"}, {"id": 3,"title": "title", "name": "hiyo"}]
+      results: [{"id": 1, "title": "Title", "name": "Abstract goes here"}, {"id": 3,"title": "title", "name": "Abstract #2"}]
     };
 
     this.handleChange = this.handleChange.bind(this);
