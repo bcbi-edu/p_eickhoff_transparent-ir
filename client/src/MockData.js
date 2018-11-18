@@ -1,0 +1,25 @@
+mockData = {
+    "data":
+    [
+        {
+            "title": "Title 1",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "weights": [
+                {"test": 0.56 },
+                {"word": 0.32 },
+                {"other": 0.12}
+            ]
+        },
+        {
+            "title": "Title 2",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "weights": [
+                {"test": 0.44 },
+                {"word": 0.42 },
+                {"other": 0.14}
+            ]
+        }
+    ]
+}
+
+export default mockData;
