@@ -32,16 +32,14 @@ public class BM25 {
             double tfNorm = (freq * (k_1 + 1))/
                             (freq + k_1 * (1 - b + b * fieldLength/avgFieldLength));
             // multiply the weight with idf 
-            double score = idf * tfNorm;
-            if (score > 0) {
-                System.out.println("docCount: " + docCount);
-                System.out.println("docFreq: " + docFreq);
-                System.out.println("freq: " + freq);
-                System.out.println("fieldLength: " + fieldLength);
-                System.out.println("avgFieldLength: " + avgFieldLength);
-                System.out.println("idf: " + idf);
-                System.out.println("tfNorm: " + tfNorm);
-            }
+            double score = idf * tfNorm; //multiplying by 100
+            // System.out.println("docCount: " + docCount);
+            // System.out.println("docFreq: " + docFreq);
+            // System.out.println("freq: " + freq);
+            // System.out.println("fieldLength: " + fieldLength);
+            // System.out.println("avgFieldLength: " + avgFieldLength);
+            // System.out.println("idf: " + idf);
+            // System.out.println("tfNorm: " + tfNorm);
             return score;
     }
 

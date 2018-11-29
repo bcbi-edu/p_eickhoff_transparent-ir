@@ -1,90 +1,28 @@
 import React from 'react';
-import Suggestions from './Suggestions';
+// import Suggestions from './Suggestions';
 import {HorizontalBar} from 'react-chartjs-2';
+import {getOptions, getHeight, createDataSet, toTitleCase, capitalizeFirstLetter} from './Util';
+import axios from 'axios'
+import './Styles.css';
 
-function getOptions(result) {
-  var tot = 0.0;
-  for (var key in result) {
-    tot += result[key]
-  }
-  
-  return {
-    scales: {
-      xAxes: [{
-        stacked: true,
-        // ticks: {beginAtZero:true,max:tot, autoskip: true},
-        ticks: {beginAtZero:true,max:tot, display: false},
-        gridLines: {
-          display: false,
-        },
-      }],
-      yAxes: [{
-          stacked: true,
-      }]
-    },
-    maintainAspectRatio: false,
-    legend: {
-      display: false
-    },
-    tooltips: {
-        enabled: true,
-        mode: 'nearest'
-    },
-  }
-}
-function createDataSet(weights, colors) {
-  var barData = [];
-  for(var key in weights) {
-    var lowerKey = key.toLowerCase();
-    barData.push({
-      label: lowerKey,
-      data: [weights[key]],
-      backgroundColor: [colors[lowerKey]],
-      borderColor: ['rgba(0,0,0,0)',],
-      borderWidth: 2,
-    })
-  }
-  return {datasets: barData};
-}
-
-var id = 2;
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: "",
-      colors: this.getRandomColor("lorem sed labore"),
+      value: "what is supersonic",
+      colors: this.getRandomColor("lucene"),
       submitted: false,
-      data:
-        [
-            {
-              "id": id++,
-              "title": "Title 1",
-              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
-              "weights": 
-                  {
-                    "Lorem": 33,
-                    "sed": 35,
-                    "labore": 400
-                  }
-            },
-            {
-              "id": id++,
-              "title": "Title 2",
-              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
-              "weights": 
-                  {
-                    "Lorem": 27,
-                    "sed": 22,
-                    "labore": 1
-                  }
-            }
-        ]
-    //}
+      data: [],
+      lastQuery: "",
+      isResults: true,
+      title: "",
+      text: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit =  this.handleSubmit.bind(this);
+    this.handleDescription = this.handleDescription.bind(this);
+    this.handleBack = this.handleBack.bind(this);
   }
 
   handleChange(event) {
@@ -93,38 +31,146 @@ class SearchBar extends React.Component {
 
   handleSubmit(event) {
     const val = this.state.value;
-    var data = this.state.data;
     var colors = this.getRandomColor(val)
-    data.push({
-      "id": id++,
-      "title": "title",
-      "description": this.state.value,
-      "weights": 
-        {
-          "Lorem": 23,
-          "sed": 13,
-          "labore": 12
+    axios.get(`http://localhost:8080/search?name=${this.state.value}`)
+      .then(res => {
+        const data = res.data.data;
+        // console.log("DATA", data);
+        this.setState({ 
+          data: this.updateJson(data),
+          value: "",
+          submitted: true,
+          colors: colors,
+          lastQuery: val,
+          isResults: true,
+          desc: ""
+        });
+        if (data === {}) {
+          this.setState({
+            submitted: false
+          })
         }
-  })
+        // console.log("CURR", this.state.data)
 
+      })
+    event.preventDefault();
+  }
+
+
+  handleDescription = (text) => (event) => {
+    var split = text.split(" . ");
+    var title = toTitleCase(split[0].slice(1));
+    var description = capitalizeFirstLetter(split.slice(2,-1)).join(". ") + ".";
     this.setState({
-      data: data,
-      value: "",
-      submitted: true,
-      colors: colors
+      isResults: false,
+      title: title,
+      text: description,
     })
     event.preventDefault();
-    this.renderResults(val);
+  }
+
+  handleBack(event) {
+    this.setState({
+      isResults: true,
+      title: "",
+      text: ""
+    })
+    event.preventDefault();
   }
 
   renderResults() {
-    return <Suggestions results={this.state.data} query={this.state.value}/>
-  }
+    if (this.state.data.length === 1) {
+      return (
+      <ul className="search-results">
+        <li key={0}>
+          <section className="container">
+            <div className="noResult">
+              <p>{"No results found"}</p>
+            </div>
+          </section>
+        </li>
+      </ul>
+      )
+    }
+    if (this.state.isResults){
+      return (
+        <ul className="search-results">
+          {
+            this.state.data.map(r => (
+                <li key={r.id}>
+                <section className="container">
+                  {/* <Router> */}
+                  <div className="one">
+                    <p className="results" onClick={this.handleDescription(r.description)}>{r.description.split(",")[0].slice(1,-3)}</p>
+                    {/* <div onClick={this.getRoute(r.description)}>{r.description.split(",")[0].slice(1,-3)}</div> */}
+                    {/* <Link to={`/result/${r.description.split(",")[0].slice(1,-3)}`}> {r.description.split(",")[0].slice(1,-3)}</Link> */}
+                    {/* <Route path="/about/" component={Welcome} /> */}
+                  </div>
+                  {/* </Router> */}
+                  
+                  <div className="two">
+                    <HorizontalBar data={createDataSet(this.state.lastQuery, r.weights,this.state.colors)} options={getOptions(r.id, this.state.data)} width={.1} height={getHeight(r.id)}/>
 
+                  </div>
+                  <div className="clear"></div>
+                </section>   
+                </li>
+              ))
+          }
+          </ul>
+      )
+    } else {
+      return(
+        <div className="text-container">
+          <button onClick={this.handleBack}>
+            Back
+          </button>
+          <h3>{this.state.title}</h3>
+          <p>{this.state.text}</p> 
+        </div>
+      )
+    }
+  }
+  updateJson(data) {
+    var oldData = data;
+    var newData = [];
+    var id = 1;
+    var sortable = [];
+
+    for (var key in oldData) {
+      var weights = oldData[key];
+      var tot = 0.0;
+      for (var w in weights) {
+        weights[w] = Math.abs(Math.round(100*weights[w])/100)
+        tot += weights[w];
+      }
+      sortable.push([key, tot]);
+    }
+    sortable.sort(function(a, b) {
+      return b[1] - a[1];
+    });
+    for (var i=0; i<sortable.length; i++) {
+      newData.push({
+        "id": id++,
+        "title": "title " + id,
+        "description": sortable[i][0],
+        "weights": oldData[sortable[i][0]]
+      })
+    }
+    newData.unshift({
+      "id": 0,
+        "title": "title " + id,
+        "description": "",
+        "weights": {}
+    })
+    // console.log("NEW DATA", newData);
+    return newData;
+  }
   getRandomColor(query) {
     var dict = {};
-    var query = query.toLowerCase();
-    var words = query.split(" ");
+    var splitQuery = query.toLowerCase();
+    var words = splitQuery.split(" ");
+    words = [...new Set(words)]; 
     for(var i = 0; i<words.length; i++) {
       var r = Math.round(Math.random() * 255);
       var g = Math.round(Math.random() * 255);
@@ -145,27 +191,7 @@ class SearchBar extends React.Component {
             <input type="submit" value="Search" style={{width: "75px", height: "25px", padding: "5px"}}/>
           </form>
         </div>
-        {/* <Suggestions results={this.state.data} query={this.state.value}/> */}
-        <ul className="search-results">
-        {
-          this.state.data.map(r => (
-              <li key={r.id}>
-              <section className="container">
-                <div className="one">
-                  {/* <h3>{r.title}</h3> */}
-                  <p>{r.description}</p>
-                </div>
-                <div className="two">
-                  {/* <BarChart data={r.weights} colors={this.state.colors}/> */}
-                  <HorizontalBar data={createDataSet(r.weights,this.state.colors)} options={getOptions(this.state.data[0].weights)} width={.000001} height={53}/>
-
-                </div>
-                <div className="clear"></div>
-              </section>   
-              </li>
-            ))
-        }
-        </ul>
+        {this.state.submitted && this.renderResults()}
       </div>
       
     );
