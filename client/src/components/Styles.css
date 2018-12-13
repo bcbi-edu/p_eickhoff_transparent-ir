@@ -1,3 +1,8 @@
+.app {
+    width: 90%;
+    margin: auto;
+}
+
 .title {
     text-align: center;
 }
@@ -17,14 +22,21 @@
 /* .container:hover {
     background-color: #CDCDCD;
 } */
-.one {
-    width: 60%;
+
+.star {
+    width: 3%;
     float: left;
-    text-align: right;
+    /* background-color: rgb(4, 39, 4); */
+}
+.one {
+    width: 67%;
+    float: left;
+    text-align: left;
+    /* background-color: red; */
 }
 .two {
-    margin-left: 60%;
-    width: 40%;
+    margin-left: 70%;
+    width: 30%;
     /* height: 200px; */
     /* background: yellowgreen; */
 }

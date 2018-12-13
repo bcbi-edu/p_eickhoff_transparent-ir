@@ -1,6 +1,9 @@
 package hello;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.TreeMap;
 
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,10 +21,12 @@ public class SearchController {
     public SearchController() throws IOException, ParseException {
         this.engine = new SearchEngine();
     }
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "http://localhost:9000")
     @RequestMapping("/search")
     public Search search(@RequestParam(value="name", defaultValue="Missing Query") String name) {
-        return new Search(this.engine.getResults(name));
+        TreeMap<String, HashMap<String, Double>> data = this.engine.getResults(name);
+        ArrayList<String> descriptions = this.engine.getDescriptions();
+        return new Search(data, descriptions);
         //counter.incrementAndGet()
     }
 }
