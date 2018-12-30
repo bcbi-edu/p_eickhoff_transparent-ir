@@ -20,6 +20,7 @@ class SearchBar extends React.Component {
       title: "",
       text: "",
       links: new Set()
+      // links :['test']
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -40,10 +41,9 @@ class SearchBar extends React.Component {
       .then(res => {
         const data = res.data.data;
         const descriptions = res.data.descriptions
-        // console.log("DATA", data);
         this.setState({ 
           data: this.updateJson(data, descriptions),
-          value: "",
+          // value: "",
           submitted: true,
           colors: colors,
           lastQuery: val,
@@ -55,8 +55,6 @@ class SearchBar extends React.Component {
             submitted: false
           })
         }
-        // console.log("CURR", this.state.data)
-
       })
     event.preventDefault();
   }
@@ -109,8 +107,24 @@ class SearchBar extends React.Component {
     }
   }
 
+  // applyBold(description) {
+  //   var words = description.split(" ");
+  //   const query = this.state.query;
+  //   let desc = [];
+  //   for (var i=0; i<words.length;i++) {
+  //     for 
+  //     var word = words[i];
+  //     if (query.includes(word)) {
+  //       query.push(<strong>{word}</strong>);
+  //     } else {
+  //       query.push(word);
+  //     }
+  //   }
+  // return (<p>{desc}</p>);
+  // }
+
   renderButton(title) {
-    if (title != "") {
+    if (title !== "") {
       return(
         <Button
           onClick={this.handleFavorites(title)}
@@ -149,7 +163,7 @@ class SearchBar extends React.Component {
                 </div>
                 <div className="one">
                   <p className="results" onClick={this.handleDescription(r.description)}>{r.title}</p>
-                  <p>{r.description.replace(/(([^\s]+\s\s*){50})(.*)/,"$1…") /* first 50 words*/}</p> 
+                  <p>{this.applyBold(r.description.replace(/(([^\s]+\s\s*){50})(.*)/,"$1…")) /* first 50 words*/}</p> 
                 </div>
                 <div className="two">
                   <HorizontalBar data={createDataSet(this.state.lastQuery, r.weights,this.state.colors)} options={getOptions(r.id, this.state.data)} width={.1} height={getHeight(r.id)}/>

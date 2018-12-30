@@ -59,23 +59,63 @@
             <div class="row">
               <h3>INSTRUCTIONS</h3>
               <p>
-                <b>Your Exploration Task is the Following:</b> 'Exploration Task Goes Here'
+                <b>
+                  Your task is to answer the following prompt:
+                </b>
+                What are the structural and aeroelastic problems associated with flight of high speed aircraft?
               </p>
               <p>
-                There is a search bar where you can make queries to search documents about 'INSERT DATASET HERE'
+                You are given a collection of documents about airplanes and aeronautics.
+                There is a search bar where you can make queries to search for documents.
+              </p>
+              <img src="images/search-bar.png" title="search bar" vspace="50" width="80%" height="80%" />
+              <p>
+                One the left-hand side, you will see the document titles and an abstract.
+                The abstract will highlight any words inside your query.
+              </p>
+              <img src="/images/results.png" title="results" vspace="50" width="70%" height="70%"/>
+              <p>
+                  Additionally, you can click on the title (which is a link) to view the entire article.
+                  In order to go back to the search results, you can hit the "Back" button above the article (as shown in the picture below).
+                  <b>
+                    Please ONLY use this back button to go back to the search results. If you try to go back using something
+                    other than this "back button", you may have to start the experiment over or your results may be invalidated.
+                  </b>
+              </p>
+              <img src="/images/doc.png" title="doc" vspace="50" width="80%" height="80%"/>
+
+              <p>
+                On the right-hand side, you will see stacked bar graphs depicting the score of each keyword in your query for each respective search result.
+                The larger the stacked bar graph, the more relevant that article is to your query. 
+                In the image below, the first article has a greater relevance score than the second and third articles.
+              </p>
+
+              <p>
+                The stacked bar graph is made up of several bars, each of which represents a word in your query.
+                The legend can be seen near the top of the page.
               </p>
               <p>
-                One the left-hand side, you will see the document titles and their abstracts. Additionally,
-                you the keywords you searched for will be highlighted in the search results.
-                Search results are ranked from highest to lowest scores, where a higher score means that a document is highly relevant to your search query.
+                If a word does not appear in the bar graph, that means that it does not appear in that article.
+                In the image below, the word "here" appears in the first three articles, but not in the last article.
+                The score is calculated using the BM25 algorithm, which ranks the importance of each word in a query.
+                The higher the score of a word, the more relevant that word is to that article.
               </p>
+              <img src="/images/bars.png" title="bars" vspace="50" width="80%" height="80%"/>
               <p>
-                On the right-hand side, you will see bar graphs depicting the score of each keyword in your query for each respective search result.
-                The score of a word is determined by the importance of the word in each search result. A higher score means that the word has a high 
-                importance in the document and that the document likely contains key information about that word.
+                If you find articles relevant to the prompt you can star them by pressing the star button.
+                Stars that are "yellow" means that the article is selected as a relevant document.
+                For example, the first element is marked as relevant, but the second one is not.
+                You will <b>gain additional pay depending on the quality of the documents you marked as relevant. </b>
               </p>
+              <img src="/images/favorites.png" title="favorites" vspace="50" width="30%" height="30%"/>
               <p>
+                When you are finished with the study, hit the "Finished with Study" button at the top left.
+                Once you hit finished, you <b>ill not be able to go back.</b>
               </p>
+              <img src="/images/finished.png" title="finished" vspace="50" width="90%" height="90%"/>
+            <p>
+              Hit the continue button below to begin the experiment.
+            </p>
             </div>
             <div class="row">
               <div class="col-12 text-center">
@@ -99,10 +139,10 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Go Back</button>
-                    <a style="color: white" class="btn btn-primary" id="continue-link" href="/simulation?id=null">Continue</a>
+                    <a style="color: white" class="btn btn-primary" id="continue-link" href="/?id=null">Continue</a>
                     <script>
                     var id = getParameterByName('id');
-$('#continue-link').attr('href', '/simulation?id=' + id);
+$('#continue-link').attr('href', '/?id=' + id);
 </script>
                   </div>
                 </div>

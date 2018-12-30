@@ -68,112 +68,379 @@
     <div id="prepare" class="container">
       <h3>Exit Survey</h3>
       <p>All questions are required. Earn a bonus of $1.00 by giving good, 2-3 sentence answers for each question!</p>
-      <!-- <form onsubmit="event.preventDefault(); handleSubmit();"> -->
       <form method="post" action="success">
         <div class="form-group">
           <div class="form-check">
-              <input type="hidden" name="id" value="bar" id="id"/>
-              <input type="hidden" name="time" value="0" id="time"/>
-              <script>
-                function getParameterByName(name, url) {
-                  if (!url) url = window.location.href;
-                  name = name.replace(/[\[\]]/g, '\\$&');
-                  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-                    results = regex.exec(url);
-                  if (!results) return null;
-                  if (!results[2]) return '';
-                  return decodeURIComponent(results[2].replace(/\+/g, ' '));
-                }
-                var id = getParameterByName('id');
-                var time = getParameterByName('time');
-                $('#id').attr('value', id);
-                $('#time').attr('value', time);
-              </script>
-            </div>
-        </div>
-        <div class="form-group">
-          <label>Do you have a driver's license?</label>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="license" id="license-yes" value=yes required>
-            <label class="form-check-label" for="license-yes">
-              Yes
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="license" id="license-no" value=no required>
-            <label class="form-check-label" for="license-no">
-              No
-            </label>
+            <input type="hidden" name="id" value="bar" id="id"/>
+            <input type="hidden" name="time" value="0" id="time"/>
+            <script>
+              function getParameterByName(name, url) {
+                if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, '\\$&');
+                var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                  results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, ' '));
+              }
+              var id = getParameterByName('id');
+              var time = getParameterByName('time');
+              $('#id').attr('value', id);
+              $('#time').attr('value', time);
+            </script>
           </div>
         </div>
         <div class="form-group">
-          <label>How submissive or aggressive was the other car's driving behavior?</label>
+          <label for="What are the structural and aeroelastic problems associated with flight of high speed aircraft?">What are the structural and aeroelastic problems associated with flight of high speed aircraft?</label>
+          <textarea class="form-control" name="What are the structural and aeroelastic problems associated with flight of high speed aircraft?" rows="3" maxlength="2000" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>The search engine was simple to use</label>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="sdc-sub-agro" id="sdc-sub-agro-1" value=1 required>
-            <label class="form-check-label" for="sdc-sub-agro-1">
-              1 (Submissive)
+            <input class="form-check-input" type="radio" name="The search engine was simple to use" id="strongly-disagree" value=strongly-disagree required>
+            <label class="form-check-label" for="strongly-disagree">
+              Strongly Disagree
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="sdc-sub-agro" id="sdc-sub-agro-2" value=2 required>
-            <label class="form-check-label" for="sdc-sub-agro-2">
-              2
+            <input class="form-check-input" type="radio" name="The search engine was simple to use" id="disagree" value=disagree required>
+            <label class="form-check-label" for="disagree">
+              Disagree
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="sdc-sub-agro" id="sdc-sub-agro-3" value=3 required>
-            <label class="form-check-label" for="sdc-sub-agro-3">
-              3
+            <input class="form-check-input" type="radio" name="The search engine was simple to use" id="neutral" value=neutral required>
+            <label class="form-check-label" for="neutral">
+              Neutral
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="sdc-sub-agro" id="sdc-sub-agro-4" value=4 required>
-            <label class="form-check-label" for="sdc-sub-agro-4">
-              4
+            <input class="form-check-input" type="radio" name="The search engine was simple to use" id="agree" value=agree required>
+            <label class="form-check-label" for="agree">
+              Agree
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="sdc-sub-agro" id="sdc-sub-agro-5" value=5 required>
-            <label class="form-check-label" for="sdc-sub-agro-5">
-              5 (Aggressive)
+            <input class="form-check-input" type="radio" name="The search engine was simple to use" id="strongly-agree" value=strongly-agree required>
+            <label class="form-check-label" for="strongly-agree">
+              Strongly Agree
+            </label>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label>Transparency in search results made it easier to find relevant documents</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Transparency in search results made it easier to find relevant documents" id="strongly-disagree" value=strongly-disagree required>
+            <label class="form-check-label" for="strongly-disagree">
+              Strongly Disagree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Transparency in search results made it easier to find relevant documents" id="disagree" value=disagree required>
+            <label class="form-check-label" for="disagree">
+              Disagree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Transparency in search results made it easier to find relevant documents" id="neutral" value=neutral required>
+            <label class="form-check-label" for="neutral">
+              Neutral
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Transparency in search results made it easier to find relevant documents" id="agree" value=agree required>
+            <label class="form-check-label" for="agree">
+              Agree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Transparency in search results made it easier to find relevant documents" id="strongly-agree" value=strongly-agree required>
+            <label class="form-check-label" for="strongly-agree">
+              Strongly Agree
             </label>
           </div>
         </div>
 
         <div class="form-group">
-          <label>How submissive or aggressive was your driving behavior?</label>
+          <label>The visualizations shown provide useful insight into how the results are ranked</label>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="hum-sub-agro" id="hum-sub-agro-1" value=1 required>
-            <label class="form-check-label" for="hum-sub-agro-1">
-              1 (Submissive)
+            <input class="form-check-input" type="radio" name="The visualizations shown provide useful insight into how the results are ranked" id="strongly-disagree" value=strongly-disagree required>
+            <label class="form-check-label" for="strongly-disagree">
+              Strongly Disagree
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="hum-sub-agro" id="hum-sub-agro-2" value=2 required>
-            <label class="form-check-label" for="hum-sub-agro-2">
-              2
+            <input class="form-check-input" type="radio" name="The visualizations shown provide useful insight into how the results are ranked" id="disagree" value=disagree required>
+            <label class="form-check-label" for="disagree">
+              Disagree
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="hum-sub-agro" id="hum-sub-agro-3" value=3 required>
-            <label class="form-check-label" for="hum-sub-agro-3">
-              3
+            <input class="form-check-input" type="radio" name="The visualizations shown provide useful insight into how the results are ranked" id="neutral" value=neutral required>
+            <label class="form-check-label" for="neutral">
+              Neutral
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="hum-sub-agro" id="hum-sub-agro-4" value=4 required>
-            <label class="form-check-label" for="hum-sub-agro-4">
-              4
+            <input class="form-check-input" type="radio" name="The visualizations shown provide useful insight into how the results are ranked" id="agree" value=agree required>
+            <label class="form-check-label" for="agree">
+              Agree
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="hum-sub-agro" id="hum-sub-agro-5" value=5 required>
-            <label class="form-check-label" for="hum-sub-agro-5">
-              5 (Aggressive)
+            <input class="form-check-input" type="radio" name="The visualizations shown provide useful insight into how the results are ranked" value=strongly-agree required>
+            <label class="form-check-label" for="strongly-agree">
+              Strongly Agree
             </label>
           </div>
         </div>
 
+        <div class="form-group">
+          <label>Finding relevant results to searches was intuitive</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Finding relevant results to searches was intuitive" id="strongly-disagree" value=strongly-disagree required>
+            <label class="form-check-label" for="strongly-disagree">
+              Strongly Disagree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Finding relevant results to searches was intuitive" id="disagree" value=disagree required>
+            <label class="form-check-label" for="disagree">
+              Disagree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Finding relevant results to searches was intuitive" id="neutral" value=neutral required>
+            <label class="form-check-label" for="neutral">
+              Neutral
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Finding relevant results to searches was intuitive" id="agree" value=agree required>
+            <label class="form-check-label" for="agree">
+              Agree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Finding relevant results to searches was intuitive" value=strongly-agree required>
+            <label class="form-check-label" for="strongly-agree">
+              Strongly Agree
+            </label>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label>The results from the search engine are an accurate representation of the truth</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="The results from the search engine are an accurate representation of the truth" id="strongly-disagree" value=strongly-disagree required>
+            <label class="form-check-label" for="strongly-disagree">
+              Strongly Disagree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="The results from the search engine are an accurate representation of the truth" id="disagree" value=disagree required>
+            <label class="form-check-label" for="disagree">
+              Disagree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="The results from the search engine are an accurate representation of the truth" id="neutral" value=neutral required>
+            <label class="form-check-label" for="neutral">
+              Neutral
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="The results from the search engine are an accurate representation of the truth" id="agree" value=agree required>
+            <label class="form-check-label" for="agree">
+              Agree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="The results from the search engine are an accurate representation of the truth" value=strongly-agree required>
+            <label class="form-check-label" for="strongly-agree">
+              Strongly Agree
+            </label>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label>The application clearly explains the rankings of the results</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="The application clearly explains the rankings of the results" id="strongly-disagree" value=strongly-disagree required>
+            <label class="form-check-label" for="strongly-disagree">
+              Strongly Disagree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="The application clearly explains the rankings of the results" id="disagree" value=disagree required>
+            <label class="form-check-label" for="disagree">
+              Disagree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="The application clearly explains the rankings of the results" id="neutral" value=neutral required>
+            <label class="form-check-label" for="neutral">
+              Neutral
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="The application clearly explains the rankings of the results" id="agree" value=agree required>
+            <label class="form-check-label" for="agree">
+              Agree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="The application clearly explains the rankings of the results" value=strongly-agree required>
+            <label class="form-check-label" for="strongly-agree">
+              Strongly Agree
+            </label>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label>Transparency in search results helped to find relevant documents quickly</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Transparency in search results helped to find relevant documents quickly" id="strongly-disagree" value=strongly-disagree required>
+            <label class="form-check-label" for="strongly-disagree">
+              Strongly Disagree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Transparency in search results helped to find relevant documents quickly" id="disagree" value=disagree required>
+            <label class="form-check-label" for="disagree">
+              Disagree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Transparency in search results helped to find relevant documents quickly" id="neutral" value=neutral required>
+            <label class="form-check-label" for="neutral">
+              Neutral
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Transparency in search results helped to find relevant documents quickly" id="agree" value=agree required>
+            <label class="form-check-label" for="agree">
+              Agree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Transparency in search results helped to find relevant documents quickly" value=strongly-agree required>
+            <label class="form-check-label" for="strongly-agree">
+              Strongly Agree
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>The score of each word in the graphs accurately depict their importance in each document</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="The score of each word in the graphs accurately depict their importance in each document" id="strongly-disagree" value=strongly-disagree required>
+            <label class="form-check-label" for="strongly-disagree">
+              Strongly Disagree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="The score of each word in the graphs accurately depict their importance in each document" id="disagree" value=disagree required>
+            <label class="form-check-label" for="disagree">
+              Disagree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="The score of each word in the graphs accurately depict their importance in each document" id="neutral" value=neutral required>
+            <label class="form-check-label" for="neutral">
+              Neutral
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="The score of each word in the graphs accurately depict their importance in each document" id="agree" value=agree required>
+            <label class="form-check-label" for="agree">
+              Agree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="The score of each word in the graphs accurately depict their importance in each document" value=strongly-agree required>
+            <label class="form-check-label" for="strongly-agree">
+              Strongly Agree
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>It is clear why a certain result is ranked higher than another results</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="It is clear why a certain result is ranked higher than another results" id="strongly-disagree" value=strongly-disagree required>
+            <label class="form-check-label" for="strongly-disagree">
+              Strongly Disagree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="It is clear why a certain result is ranked higher than another results" id="disagree" value=disagree required>
+            <label class="form-check-label" for="disagree">
+              Disagree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="It is clear why a certain result is ranked higher than another results" id="neutral" value=neutral required>
+            <label class="form-check-label" for="neutral">
+              Neutral
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="It is clear why a certain result is ranked higher than another results" id="agree" value=agree required>
+            <label class="form-check-label" for="agree">
+              Agree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="It is clear why a certain result is ranked higher than another results" value=strongly-agree required>
+            <label class="form-check-label" for="strongly-agree">
+              Strongly Agree
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>The rankings of the search results coresponded to how trustworthy they were</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="The rankings of the search results coresponded to how trustworthy they were" id="strongly-disagree" value=strongly-disagree required>
+            <label class="form-check-label" for="strongly-disagree">
+              Strongly Disagree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="The rankings of the search results coresponded to how trustworthy they were" id="disagree" value=disagree required>
+            <label class="form-check-label" for="disagree">
+              Disagree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="The rankings of the search results coresponded to how trustworthy they were" id="neutral" value=neutral required>
+            <label class="form-check-label" for="neutral">
+              Neutral
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="The rankings of the search results coresponded to how trustworthy they were" id="agree" value=agree required>
+            <label class="form-check-label" for="agree">
+              Agree
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="The rankings of the search results coresponded to how trustworthy they were" value=strongly-agree required>
+            <label class="form-check-label" for="strongly-agree">
+              Strongly Agree
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="Any additional thoughts or comments on the experiment?">Any additional thoughts or comments on the experiment?</label>
+          <textarea class="form-control" name="Any additional thoughts or comments on the experiment?" rows="3" maxlength="2000" required></textarea>
+        </div>
+  
         <div class="row">
           <div class="col-12 text-center">
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -183,55 +450,3 @@
     </div>
   </div>
 </body>
-
-
-<!-- <script>
-function handleSubmit() {
-  let expname = getUrlParameter('expname');
-  let reward = getUrlParameter('reward');
-  let workerID = getUrlParameter('id');
-  let secretID = getUrlParameter('sid');
-  let data = {
-    timestamp: Date.now(),
-    experiment: expname,
-    total_reward: reward,
-    workerID: workerID,
-    secretID: secretID,
-    license: $('input[name=license]:checked').val(),
-    drive_freq: $('input[name=drive-freq]:checked').val(),
-    hours_gamed: $('#hours-gamed').val(),
-    purpose: $('#purpose').val(),
-    sdc_behavior: $('#sdc-behavior').val(),
-    sdc_change_hum_behavior: $('#sdc-change-hum-behavior').val(),
-    sdc_fair: $('input[name=sdc-fair]:checked').val(),
-    hum_fair: $('input[name=hum-fair]:checked').val(),
-    share_feelings: $('#feelings').val(),
-    sdc_sub_agro: $('input[name=sdc-sub-agro]:checked').val(),
-    hum_sub_agro: $('input[name=hum-sub-agro]:checked').val(),
-  };
-  postData(JSON.stringify(data));
-  window.location.href = `/success?reward=${reward}&sid=${secretID}`;
-}
-function postData(data) {
-  var request = new XMLHttpRequest();
-  request.open(
-    'POST',
-    'https://api.mlab.com/api/1/databases/exit-survey/collections/pilot?apiKey=cZMocgseoJQoET6o9ZpAd3lJ_lY9TJjR',
-    false,
-  );
-  request.setRequestHeader('Content-Type', 'application/json');
-  request.send(data);
-}
-var getUrlParameter = function getUrlParameter(sParam) {
-  var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-    sURLVariables = sPageURL.split('&'),
-    sParameterName,
-    i;
-  for (i = 0; i < sURLVariables.length; i++) {
-    sParameterName = sURLVariables[i].split('=');
-    if (sParameterName[0] === sParam) {
-      return sParameterName[1] === undefined ? true : sParameterName[1];
-    }
-  }
-};
-</script> -->
