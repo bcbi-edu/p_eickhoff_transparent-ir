@@ -35,3 +35,7 @@ dependencies {
     compile group: 'org.apache.lucene', name: 'lucene-queryparser', version: '7.5.0'
 }
 
+//added this for heroku
+task wrapper(type: Wrapper) {
+    gradleVersion = '5.1'
+}
