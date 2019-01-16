@@ -21,7 +21,8 @@ public class SearchController {
     public SearchController() throws IOException, ParseException {
         this.engine = new SearchEngine();
     }
-    @CrossOrigin(origins = "http://localhost:9000")
+    // @CrossOrigin(origins = "http://localhost:9000")
+    @CrossOrigin(origins = "http://localhost:3000")
     @RequestMapping("/search")
     public Search search(@RequestParam(value="name", defaultValue="Missing Query") String name) {
         TreeMap<String, HashMap<String, Double>> data = this.engine.getResults(name);

@@ -91,8 +91,10 @@ public class SearchEngine {
                 for (String word : querystr.split(" ")) {
                     if (map.containsKey(word)) {
                         continue;
+                    } else if (!this.docFrequencies.containsKey(word)) {
+                        map.put(word, 0.0);
+                        continue; 
                     }
-                    // double docFreq = this.getDocFreq(searcher, word);
                     double docFreq = this.docFrequencies.get(word);
                     double fieldLength = content.split(" ").length;
                     double docCount = this.numDocs;
@@ -120,6 +122,9 @@ public class SearchEngine {
     }
 
     public double getDocFreq(IndexSearcher searcher,String word) throws IOException {
+        if (word == null) {
+            return 0;
+        }
         double count = 0;
         for (int i=0; i<reader.maxDoc(); i++) {
             Document d = reader.document(i);
