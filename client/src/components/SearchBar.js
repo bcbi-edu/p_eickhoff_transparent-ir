@@ -94,7 +94,7 @@ class SearchBar extends React.Component {
     this.setState({
       links: links
     });
-    console.log(this.state.links);
+    // console.log(this.state.links);
     event.preventDefault();
   }
 
@@ -163,7 +163,7 @@ class SearchBar extends React.Component {
                 </div>
                 <div className="one">
                   <p className="results" onClick={this.handleDescription(r.description)}>{r.title}</p>
-                  <p>{this.applyBold(r.description.replace(/(([^\s]+\s\s*){50})(.*)/,"$1…")) /* first 50 words*/}</p> 
+                  <p>{r.description.replace(/(([^\s]+\s\s*){50})(.*)/,"$1…") /* first 50 words*/}</p> 
                 </div>
                 <div className="two">
                   <HorizontalBar data={createDataSet(this.state.lastQuery, r.weights,this.state.colors)} options={getOptions(r.id, this.state.data)} width={.1} height={getHeight(r.id)}/>
