@@ -1,2 +1,2 @@
-web: https://github.com/heroku/heroku-buildpack-nodejs
-api: https://github.com/heroku/heroku-buildpack-gradle
+client: https://github.com/heroku/heroku-buildpack-nodejs
+server: https://github.com/heroku/heroku-buildpack-gradle
