@@ -53,8 +53,8 @@ app.get('/id', function(req, res) {
 // if (process.env.NODE_ENV === 'production') {
 // 	app.use(express.static('client/build'));
 // }
-app.get('/', (request, response) => {
-	response.send("hello world");
+app.get('/', (req, res) => {
+	res.sendFile(__dirname + '/index.html');
 });
 
 app.get('/legal', function(req, res) {
