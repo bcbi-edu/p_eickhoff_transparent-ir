@@ -41,7 +41,6 @@ var curr = 0;
 const port = process.env.PORT || 9000;
 var url ='mongodb://jeromer241:ILikeFru1ts@ds131954.mlab.com:31954/research';
 
-app.use(express.static(path.join(__dirname, '../client/build')));
 app.use(bodyParser.urlencoded({ extended: true })); 
 app.use('/images', express.static(__dirname + "/images"));
 
@@ -54,7 +53,8 @@ app.get('/id', function(req, res) {
 // 	app.use(express.static('client/build'));
 // }
 app.get('/', (req, res) => {
-	res.sendFile(__dirname + '/index.html');
+  app.use(express.static(path.join(__dirname, '../client/build')));
+	res.sendFile(__dirname + '/build/index.html');
 });
 
 app.get('/legal', function(req, res) {
