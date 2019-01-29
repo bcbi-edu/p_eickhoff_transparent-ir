@@ -45,7 +45,7 @@ class App extends React.Component {
       console.log(links);
       if (window.confirm("Are you finished with the study? (After you hit confirm, you are not allowed to return back to this page)")) {
         console.log(body)
-        axios.post(`https://ir-sim.herokuapp.com//links`, body)
+        axios.post(`https://ir-sim.herokuapp.com/ /links`, body)
         .then(res => {
         
         window.location = `/exit-form?id=${id}&time=${diff}`;
