@@ -52,9 +52,15 @@ app.get('/id', function(req, res) {
 // if (process.env.NODE_ENV === 'production') {
 // 	app.use(express.static('client/build'));
 // }
-app.get('/', (req, res) => {
-  app.use(express.static(path.join(__dirname, '../client/build')));
-	res.sendFile(__dirname + '/build/index.html');
+// app.get('/', (req, res) => {
+//   app.use(express.static(path.join(__dirname, '../client/build')));
+// 	res.sendFile(__dirname + '/build/index.html');
+// });
+
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 app.get('/legal', function(req, res) {
