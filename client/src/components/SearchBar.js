@@ -37,7 +37,7 @@ class SearchBar extends React.Component {
   handleSubmit(event) {
     const val = this.state.value;
     var colors = this.getRandomColor(val)
-    axios.get(`https://ir-sim-api.herokuapp.com/search?name=${this.state.value}`)
+    axios.get(`http://ir-sim-api.herokuapp.com/search?name=${this.state.value}`)
       .then(res => {
         const data = res.data.data;
         const descriptions = res.data.descriptions
