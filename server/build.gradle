@@ -35,6 +35,9 @@ dependencies {
     compile group: 'org.apache.lucene', name: 'lucene-queryparser', version: '7.5.0'
 }
 
+//stage
+task stage(dependsOn: ['build', 'clean'])
+build.mustRunAfter clean
 // //added this for heroku
 // task wrapper(type: Wrapper) {
 //     gradleVersion = '5.1'
