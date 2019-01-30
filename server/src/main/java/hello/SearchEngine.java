@@ -28,7 +28,7 @@ public class SearchEngine {
     
     private StandardAnalyzer analyzer;
     private DirectoryReader reader;
-    private static String INDEX_DIRECTORY = "../index";
+    private static String INDEX_DIRECTORY = "index";
     private ArrayList<String> discriptions;
     private double averageFieldLength;
     private HashMap<String, Integer> docFrequencies;
