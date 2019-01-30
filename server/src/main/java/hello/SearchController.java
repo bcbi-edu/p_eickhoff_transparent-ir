@@ -22,7 +22,7 @@ public class SearchController {
         this.engine = new SearchEngine();
     }
     // @CrossOrigin(origins = "http://localhost:9000")
-    @CrossOrigin(origins = "https://ir-sim.herokuapp.com/")
+    @CrossOrigin(origins = "http://ir-sim.herokuapp.com/")
     @RequestMapping("/search")
     public Search search(@RequestParam(value="name", defaultValue="Missing Query") String name) {
         TreeMap<String, HashMap<String, Double>> data = this.engine.getResults(name);
