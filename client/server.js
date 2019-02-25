@@ -54,25 +54,51 @@ app.get('/instructions', function(req, res) {
   res.sendFile(__dirname + '/instructions.html');
 });
 
+app.get('/verify', function(req, res){
+  res.sendFile(__dirname + '/verify.html');
+})
+
 app.get('/exit-form', function(req, res){
   res.sendFile(__dirname + '/exit-form.html');
 })
 
 app.post('/success/', function(req, res){
-  // console.log(req.body)
-  MongoClient.connect(url, function(err, db) {
-    if (err) throw err;
-    var doc = req.body;
-    // insert document to 'users' collection using insertOne
-    db.collection("responses").insertOne(doc, function(err, res) {
-        if (err) throw err;
-        console.log(doc);
-        console.log("Document inserted");
-        // close the connection to db when you are done with it
-        db.close();
-    });
-});
-  res.redirect('/success/?sid=' + req.body.id);
+  console.log(req.body)
+  // MongoClient.connect(url, function(err, db) {
+  //   if (err) throw err;
+  //   var doc = req.body;
+  //   // insert document to 'users' collection using insertOne
+  //   db.collection("responses").insertOne(doc, function(err, res) {
+  //       if (err) throw err;
+  //       console.log(doc);
+  //       console.log("Document inserted");
+  //       // close the connection to db when you are done with it
+  //       db.close();
+  //   });
+// });
+  var countCorrect = 0;
+  if (req.body["Question 1 goes here"] ==  'answer-1') {
+    countCorrect++;
+  }
+  if (req.body["Question 2 goes here"] ==  'answer-1') {
+    countCorrect++;
+  }
+  if (req.body["Question 3 goes here"] ==  'answer-1') {
+    countCorrect++;
+  }
+  if (req.body["Question 4 goes here"] ==  'answer-1') {
+    countCorrect++;
+  }
+  if (req.body["Question 5 goes here"] ==  'answer-1') {
+    countCorrect++;
+  }
+  if (countCorrect >= 4) {
+    console.log("Number correct", countCorrect);
+    res.redirect('/success/?sid=' + req.body.id);
+  } else {
+    var newSession = (Number(req.body.session) + 1).toString();
+    res.redirect('/?id=' + req.body.id + '&session=' + newSession + '&time=0');
+  }
 
 })
 

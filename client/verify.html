@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Instructions</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <style>
+        body {
+          /* padding: 15px; */
+          padding-bottom: 100px;
+          padding-top: 100px;
+        }
+        h3 {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        p {
+            font-size: 1.5em
+        }
+        li {
+            font-size: 1.5em
+        }
+        b {
+          color: #F44335
+        }
+        label {
+          font-weight: bold;
+        }
+        .input-field>input {
+            margin-top: 10px !important;
+        }
+        .container {
+            width: 50% !important;
+        }
+        #instruction-container>p {
+            margin-top: 3px;
+            margin-bottom: 3px;
+        }
+        .row {
+          margin-top: 30px;
+        }
+        .form-group {
+          margin-top: 30px
+        }
+        .form-check-label {
+          font-weight: normal;
+        }
+    </style>
+    <script type="text/javascript">
+    function getParameterByName(name, url) {
+  if (!url) url = window.location.href;
+  name = name.replace(/[\[\]]/g, '\\$&');
+  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+    results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+</script>
+</head>
+
+<body style="overflow: auto;">
+  <div id="panel">
+    <div id="prepare" class="container">
+      <h3>Verification Survey</h3>
+      <p>Please answer all questions. If you answer at least 4 of the 5 questions correctly, you will complete the task. 
+        Otherwise, you will be sent back to the search engine</p>
+      <form method="post" action="success">
+        <div class="form-group">
+          <div class="form-check">
+            <input type="hidden" name="id" value="bar" id="id"/>
+            <input type="hidden" name="time" value="0" id="time"/>
+            <input type="hidden" name="session" value="0" id="session"/>
+            <script>
+              function getParameterByName(name, url) {
+                if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, '\\$&');
+                var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                  results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, ' '));
+              }
+              var session = getParameterByName('session');
+              var id = getParameterByName('id');
+              var time = getParameterByName('time');
+              $('#id').attr('value', id);
+              $('#time').attr('value', time);
+              $('#session').attr('value', session)
+            </script>
+          </div>
+        </div>
+           
+        <div class="form-group">
+          <label>Question 1 goes here</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Question 1 goes here" id="answer-1" value=answer-1 required>
+            <label class="form-check-label" for="answer-1">
+              Answer 1
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Question 1 goes here" id="answer-2" value=answer-2 required>
+            <label class="form-check-label" for="answer-2">
+              Answer 2
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Question 1 goes here" id="answer-3" value=answer-3 required>
+            <label class="form-check-label" for="answer-3">
+              Answer 3
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Question 1 goes here" id="answer-4" value=answer-4 required>
+            <label class="form-check-label" for="answer-4">
+              Answer 4
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Question 2 goes here</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Question 2 goes here" id="answer-1" value=answer-1 required>
+            <label class="form-check-label" for="answer-1">
+              Answer 1
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Question 2 goes here" id="answer-2" value=answer-2 required>
+            <label class="form-check-label" for="answer-2">
+              Answer 2
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Question 2 goes here" id="answer-3" value=answer-3 required>
+            <label class="form-check-label" for="answer-3">
+              Answer 3
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Question 2 goes here" id="answer-4" value=answer-4 required>
+            <label class="form-check-label" for="answer-4">
+              Answer 4
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Question 3 goes here</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Question 3 goes here" id="answer-1" value=answer-1 required>
+            <label class="form-check-label" for="answer-1">
+              Answer 1
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Question 3 goes here" id="answer-2" value=answer-2 required>
+            <label class="form-check-label" for="answer-2">
+              Answer 2
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Question 3 goes here" id="answer-3" value=answer-3 required>
+            <label class="form-check-label" for="answer-3">
+              Answer 3
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Question 3 goes here" id="answer-4" value=answer-4 required>
+            <label class="form-check-label" for="answer-4">
+              Answer 4
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Question 4 goes here</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Question 4 goes here" id="answer-1" value=answer-1 required>
+            <label class="form-check-label" for="answer-1">
+              Answer 1
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Question 4 goes here" id="answer-2" value=answer-2 required>
+            <label class="form-check-label" for="answer-2">
+              Answer 2
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Question 4 goes here" id="answer-3" value=answer-3 required>
+            <label class="form-check-label" for="answer-3">
+              Answer 3
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Question 4 goes here" id="answer-4" value=answer-4 required>
+            <label class="form-check-label" for="answer-4">
+              Answer 4
+            </label>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label>Question 5 goes here</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Question 5 goes here" id="answer-1" value=answer-1 required>
+            <label class="form-check-label" for="answer-1">
+              Answer 1
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Question 5 goes here" id="answer-2" value=answer-2 required>
+            <label class="form-check-label" for="answer-2">
+              Answer 2
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Question 5 goes here" id="answer-3" value=answer-3 required>
+            <label class="form-check-label" for="answer-3">
+              Answer 3
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Question 5 goes here" id="answer-4" value=answer-4 required>
+            <label class="form-check-label" for="answer-4">
+              Answer 4
+            </label>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-12 text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>

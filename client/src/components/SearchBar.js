@@ -5,7 +5,8 @@ import {getOptions, getHeight, createDataSet, toTitleCase, capitalizeFirstLetter
 import axios from 'axios'
 import './Styles.css';
 import { Button, Glyphicon } from 'react-bootstrap';
-
+import { slide as Menu } from 'react-burger-menu'
+// import SideBar from './SideBar';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -19,8 +20,7 @@ class SearchBar extends React.Component {
       isResults: true,
       title: "",
       text: "",
-      links: new Set()
-      // links :['test']
+      links: new Map()
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -29,6 +29,9 @@ class SearchBar extends React.Component {
     this.handleBack = this.handleBack.bind(this);
     this.handleFavorites = this.handleFavorites.bind(this);
   }
+
+  // componentDidMount() {
+  // }
 
   handleChange(event) {
     this.setState({value: event.target.value});
@@ -84,17 +87,16 @@ class SearchBar extends React.Component {
   }
 
   //add favorite links
-  handleFavorites = (title) => (event) => {
+  handleFavorites = (title, description) => (event) => {
     var links = this.state.links;
     if (links.has(title)) {
       links.delete(title);
     } else {
-      links.add(title);
+      links.set(title, description);
     }
     this.setState({
       links: links
     });
-    // console.log(this.state.links);
     event.preventDefault();
   }
 
@@ -106,28 +108,12 @@ class SearchBar extends React.Component {
       return 'primary';
     }
   }
-
-  // applyBold(description) {
-  //   var words = description.split(" ");
-  //   const query = this.state.query;
-  //   let desc = [];
-  //   for (var i=0; i<words.length;i++) {
-  //     for 
-  //     var word = words[i];
-  //     if (query.includes(word)) {
-  //       query.push(<strong>{word}</strong>);
-  //     } else {
-  //       query.push(word);
-  //     }
-  //   }
-  // return (<p>{desc}</p>);
-  // }
-
-  renderButton(title) {
+  
+  renderButton(title, description) {
     if (title !== "") {
       return(
         <Button
-          onClick={this.handleFavorites(title)}
+          onClick={this.handleFavorites(title, description)}
           bsStyle={this.getStarStyles(title)}
           bsSize="xsmall"
         >
@@ -135,6 +121,43 @@ class SearchBar extends React.Component {
         </Button>
       );
     }
+  }
+
+  renderSideBar() {
+    var links = this.state.links;
+    var newLinks = []
+    for (let [k, v] of links) {
+      newLinks.push({
+        "title": k,
+        "description": v
+      })
+    }
+
+    var j = 0;
+    return (
+      <div className="sidebar">
+        <Menu width={ '75%' }>
+        <ul className="search-results">
+          {
+            newLinks.map(r => (
+              <li key={j++}>
+              {/* <section className="container"> */}
+                <div className="star">
+                  {this.renderButton(r.title, r.description)}
+                </div>
+                <div className="one-sidebar">
+                  <p className="results" onClick={this.handleDescription(r.description)}>{r.title}</p>
+                  <p>{r.description.replace(/(([^\s]+\s\s*){40})(.*)/,"$1…") /* first 50 words*/}</p> 
+                </div>
+                <div className="clear"></div>
+              {/* </section>    */}
+              </li>
+            ))
+          }
+          </ul>
+        </Menu>
+      </div>
+    )
   }
 
   renderResults() {
@@ -159,11 +182,11 @@ class SearchBar extends React.Component {
               <li key={r.id}>
               <section className="container">
                 <div className="star">
-                  {this.renderButton(r.title)}
+                  {this.renderButton(r.title, r.description)}
                 </div>
                 <div className="one">
                   <p className="results" onClick={this.handleDescription(r.description)}>{r.title}</p>
-                  <p>{r.description.replace(/(([^\s]+\s\s*){50})(.*)/,"$1…") /* first 50 words*/}</p> 
+                  <p>{r.description.replace(/(([^\s]+\s\s*){40})(.*)/,"$1…") /* first 50 words*/}</p> 
                 </div>
                 <div className="two">
                   <HorizontalBar data={createDataSet(this.state.lastQuery, r.weights,this.state.colors)} options={getOptions(r.id, this.state.data)} width={.1} height={getHeight(r.id)}/>
@@ -254,6 +277,7 @@ class SearchBar extends React.Component {
             <input type="submit" value="Search" style={{width: "75px", height: "25px"}}/>
           </form>
         </div>
+        {this.renderSideBar()}
         {this.state.submitted && this.renderResults()}
       </div>
       
