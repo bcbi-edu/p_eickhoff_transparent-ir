@@ -62,6 +62,7 @@ app.get('/exit-form', function(req, res){
   res.sendFile(__dirname + '/exit-form.html');
 })
 
+//from verify to exit form
 app.post('/success/', function(req, res){
   console.log(req.body)
   // MongoClient.connect(url, function(err, db) {
@@ -80,24 +81,36 @@ app.post('/success/', function(req, res){
   if (req.body["Question 1 goes here"] ==  'answer-1') {
     countCorrect++;
   }
-  if (req.body["Question 2 goes here"] ==  'answer-1') {
+  if (req.body["Question 2 goes here"] ==  'answer-2') {
     countCorrect++;
   }
-  if (req.body["Question 3 goes here"] ==  'answer-1') {
+  if (req.body["Question 3 goes here"] ==  'answer-3') {
     countCorrect++;
   }
-  if (req.body["Question 4 goes here"] ==  'answer-1') {
+  if (req.body["Question 4 goes here"] ==  'answer-2') {
     countCorrect++;
   }
-  if (req.body["Question 5 goes here"] ==  'answer-1') {
-    countCorrect++;
-  }
-  if (countCorrect >= 4) {
+  // if (req.body["Question 5 goes here"] ==  'answer-1') {
+  //   countCorrect++;
+  // }
+  if (countCorrect >= 3) {
     console.log("Number correct", countCorrect);
-    res.redirect('/success/?sid=' + req.body.id);
+    MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    var doc = req.body;
+    // insert document to 'users' collection using insertOne
+    db.collection("verify").insertOne(doc, function(err, res) {
+        if (err) throw err;
+        console.log(doc);
+        console.log("Document inserted");
+        // close the connection to db when you are done with it
+        db.close();
+    });
+  });
+    res.redirect('/exit-form/?sid=' + req.body.id);
   } else {
     var newSession = (Number(req.body.session) + 1).toString();
-    res.redirect('/?id=' + req.body.id + '&session=' + newSession + '&time=0');
+    res.redirect('/?id=' + req.body.id + '&session=' + newSession);
   }
 
 })
