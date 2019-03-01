@@ -81,10 +81,10 @@ app.post('/success/', function(req, res){
   if (req.body["Question 1 goes here"] ==  'answer-1') {
     countCorrect++;
   }
-  if (req.body["Question 2 goes here"] ==  'answer-2') {
+  if (req.body["Question 2 goes here"] ==  'answer-4') {
     countCorrect++;
   }
-  if (req.body["Question 3 goes here"] ==  'answer-3') {
+  if (req.body["Question 3 goes here"] ==  'answer-2') {
     countCorrect++;
   }
   if (req.body["Question 4 goes here"] ==  'answer-2') {
@@ -110,7 +110,7 @@ app.post('/success/', function(req, res){
     res.redirect('/exit-form/?sid=' + req.body.id);
   } else {
     var newSession = (Number(req.body.session) + 1).toString();
-    res.redirect('/?id=' + req.body.id + '&session=' + newSession);
+    res.redirect('/?id=' + req.body.id + '&session=' + newSession + '&correct=' + countCorrect);
   }
 
 })

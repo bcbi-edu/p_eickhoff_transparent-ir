@@ -3,15 +3,15 @@ import SearchBar from './components/SearchBar';
 import './components/Styles.css';
 import axios from 'axios'
 
-// function getParameterByName(name, url) {
-//   if (!url) url = window.location.href;
-//   name = name.replace(/[\[\]]/g, '\\$&');
-//   var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-//     results = regex.exec(url);
-//   if (!results) return null;
-//   if (!results[2]) return '';
-//   return decodeURIComponent(results[2].replace(/\+/g, ' '));
-// }
+function getParameterByName(name, url) {
+  if (!url) url = window.location.href;
+  name = name.replace(/[\[\]]/g, '\\$&');
+  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+    results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
 
 class App extends React.Component {
   constructor(props) {
@@ -23,6 +23,12 @@ class App extends React.Component {
     this.session = null;
   }
 
+  componentDidMount() {
+    var numCorrect = getParameterByName("correct", window.location.href);
+    if (numCorrect != null) {
+      alert("You got " + numCorrect + " question(s) correct")
+    }
+  }
   componentWillMount() {
     var startTime = new Date();
     var id = 'none';
