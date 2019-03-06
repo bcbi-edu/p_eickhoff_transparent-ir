@@ -34,9 +34,12 @@ class SearchBar extends React.Component {
   componentDidMount() {
     var url = window.location.href;
     var res = url.split("/");
+    console.log(res);
     for(var i=0; i<res.length; i++) {
-      if (res[i] == 'experiment') {
-        this.state.bars = false;
+      if (res[i] === 'experiment') {
+        this.setState({
+          bars: false
+        })
       }
     }
 
@@ -183,7 +186,7 @@ class SearchBar extends React.Component {
       </ul>
       )
     }
-    if (this.state.isResults){
+    if (this.state.isResults && this.state.bars){
       return (
         <ul className="search-results">
           {
@@ -199,6 +202,28 @@ class SearchBar extends React.Component {
                 </div>
                 <div className="two">
                   <HorizontalBar data={createDataSet(this.state.lastQuery, r.weights,this.state.colors)} options={getOptions(r.id, this.state.data)} width={.1} height={getHeight(r.id)}/>
+                </div>
+                <div className="clear"></div>
+              </section>   
+              </li>
+            ))
+          }
+          </ul>
+      )
+
+    } else if (this.state.isResults && !this.state.bars) {
+      return (
+        <ul className="search-results">
+          {
+            this.state.data.map(r => (
+              <li key={r.id}>
+              <section className="container">
+                <div className="star">
+                  {this.renderButton(r.title, r.description)}
+                </div>
+                <div className="one">
+                  <p className="results" onClick={this.handleDescription(r.description)}>{r.title}</p>
+                  <p>{r.description.replace(/(([^\s]+\s\s*){40})(.*)/,"$1…") /* first 50 words*/}</p> 
                 </div>
                 <div className="clear"></div>
               </section>   
@@ -287,7 +312,8 @@ class SearchBar extends React.Component {
           </form>
         </div>
         {this.renderSideBar()}
-        {this.state.submitted && this.renderResults() && this.state.bars}
+        {console.log("BARS", this.state.bars)}
+        {this.state.submitted && this.renderResults()}
       </div>
       
     );

@@ -42,7 +42,6 @@ class App extends React.Component {
         session: session
       })
     })
-    console.log(startTime, id, session);
   }
   getParameterByName(name, url) {
     if (!url) url = window.location.href;
