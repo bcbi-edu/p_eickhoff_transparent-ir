@@ -7,14 +7,6 @@ var MongoClient = require('mongodb').MongoClient
 app.use(bodyParser.json()); // <--- Here
 app.use(bodyParser.urlencoded({extended: true}));
 
-//allow CORS
-// var allowCrossDomain = function(req, res, next) {
-//   res.header('Access-Control-Allow-Origin', "*");
-//   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-//   res.header('Access-Control-Allow-Headers', 'Content-Type');
-//   next();
-// }
-
 const port = process.env.PORT || 9000;
 var url ='mongodb://jeromer241:ILikeFru1ts@ds131954.mlab.com:31954/research';
 
@@ -28,21 +20,18 @@ function uuidv4() {
   });
 }
 
+app.use(express.static(path.join(__dirname, 'build')));
+
 app.get('/id', function(req, res) {
   res.send(uuidv4());
 });
 
-// if (process.env.NODE_ENV === 'production') {
-// 	app.use(express.static('client/build'));
-// }
-// app.get('/', (req, res) => {
-//   app.use(express.static(path.join(__dirname, '../client/build')));
-// 	res.sendFile(__dirname + '/build/index.html');
-// });
-
-app.use(express.static(path.join(__dirname, 'build')));
-
 app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+//B testing
+app.get('/experiment/', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
@@ -50,8 +39,18 @@ app.get('/legal', function(req, res) {
     res.sendFile(__dirname + '/legal.html');
   });
 
+//B testing
+app.get('/experiment/legal', function(req, res) {
+    res.sendFile(__dirname + '/legal2.html');
+  });
+
 app.get('/instructions', function(req, res) {
   res.sendFile(__dirname + '/instructions.html');
+});
+
+//B testing
+app.get('/experiment/instructions', function(req, res) {
+  res.sendFile(__dirname + '/instructions2.html');
 });
 
 app.get('/verify', function(req, res){

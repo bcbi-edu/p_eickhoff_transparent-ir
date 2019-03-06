@@ -20,7 +20,8 @@ class SearchBar extends React.Component {
       isResults: true,
       title: "",
       text: "",
-      links: new Map()
+      links: new Map(),
+      bars: true
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -30,8 +31,16 @@ class SearchBar extends React.Component {
     this.handleFavorites = this.handleFavorites.bind(this);
   }
 
-  // componentDidMount() {
-  // }
+  componentDidMount() {
+    var url = window.location.href;
+    var res = url.split("/");
+    for(var i=0; i<res.length; i++) {
+      if (res[i] == 'experiment') {
+        this.state.bars = false;
+      }
+    }
+
+  }
 
   handleChange(event) {
     this.setState({value: event.target.value});
@@ -278,7 +287,7 @@ class SearchBar extends React.Component {
           </form>
         </div>
         {this.renderSideBar()}
-        {this.state.submitted && this.renderResults()}
+        {this.state.submitted && this.renderResults() && this.state.bars}
       </div>
       
     );

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Instructions</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <style>
+        body {
+          /* padding: 15px; */
+          padding-bottom: 100px;
+        }
+        h3 {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        p {
+            font-size: 1.5em
+        }
+        li {
+            font-size: 1.5em
+        }
+        /* b {
+          color: #F44335
+        } */
+        .input-field>input {
+            margin-top: 10px !important;
+        }
+        .container {
+            width: 50% !important;
+        }
+        #instruction-container>p {
+            margin-top: 3px;
+            margin-bottom: 3px;
+        }
+        .row {
+          margin-top: 30px;
+        }
+    </style>
+    <script type="text/javascript">
+    function getParameterByName(name, url) {
+  if (!url) url = window.location.href;
+  name = name.replace(/[\[\]]/g, '\\$&');
+  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+    results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+</script>
+</head>
+
+<body style="overflow: auto;">
+    <div id="panel">
+        <div id="prepare" class="container">
+            <div class="row">
+              <h3>INSTRUCTIONS</h3>
+              <p>
+                <b>
+                  Your task is to answer the following prompt:
+                </b>
+                What are the structural and aeroelastic problems associated with flight of high speed aircraft?
+              </p>
+              <p>
+                You are given a collection of documents about airplanes and aeronautics.
+                There is a search bar where you can make queries to search for documents.
+              </p>
+              <img src="images/search-bar.png" title="search bar" vspace="50" width="80%" height="80%" />
+              <p>
+                You will see the document titles and an abstract.
+                The abstract will highlight any words inside your query.
+              </p>
+              <img src="/images/results.png" title="results" vspace="50" width="70%" height="70%"/>
+              <p>
+                  Additionally, you can click on the title (which is a link) to view the entire article.
+                  In order to go back to the search results, you can hit the "Back" button above the article (as shown in the picture below).
+                  <b>
+                    Please ONLY use this back button to go back to the search results. If you try to go back using something
+                    other than this "back button", you may have to start the experiment over or your results may be invalidated.
+                  </b>
+              </p>
+              <img src="/images/doc.png" title="doc" vspace="50" width="80%" height="80%"/>
+
+              <p>
+                If you find articles relevant to the prompt you can star them by pressing the star button.
+                Stars that are "yellow" means that the article is selected as a relevant document.
+                For example, the first element is marked as relevant, but the second one is not.
+                You will <b>gain additional pay depending on the quality of the documents you marked as relevant. </b>
+              </p>
+              <img src="/images/favorites.png" title="favorites" vspace="50" width="30%" height="30%"/>
+              <p>
+                When you are finished with the study, hit the "Finished with Study" button at the top left.
+                Once you hit finished, you <b>ill not be able to go back.</b>
+              </p>
+              <img src="/images/finished.png" title="finished" vspace="50" width="90%" height="90%"/>
+            <p>
+              At the end of the the experiment, you will be given a multiple choice quiz to verify that you have gained knowledge in this task.
+              You must answer at least 75%  of the questions correctly to complete the task and get your reward code. However, if you do not pass,
+              you will be redirected back to the search engine, where you will have another chance to search the database again. You will earn a base pay
+              of $0.50 for completing this task. You can also get a bonus pay of $0.50 if you finish the study and complete the verification task on the first try.
+              Each subsequent attempt on the verification survey will reduce the bonus pay by $.10. If you attempt the verification survey 5 or more times, you will receive
+              no bonus pay.
+              
+            </p>
+            <p>
+              Hit the continue button below to begin the experiment.
+            </p>
+            </div>
+            <div class="row">
+              <div class="col-12 text-center">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                  Continue
+                </button>
+              </div>
+            </div>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Did you read the instructions?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    Click Continue to begin the experiment.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Go Back</button>
+                    <a style="color: white" class="btn btn-primary" id="continue-link" href="/experiment/?id=null">Continue</a>
+                    <script>
+                    var id = getParameterByName('id');
+$('#continue-link').attr('href', '/experiment/?session=1');
+</script>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+</body>
