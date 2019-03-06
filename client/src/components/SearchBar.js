@@ -34,7 +34,6 @@ class SearchBar extends React.Component {
   componentDidMount() {
     var url = window.location.href;
     var res = url.split("/");
-    console.log(res);
     for(var i=0; i<res.length; i++) {
       if (res[i] === 'experiment') {
         this.setState({
@@ -312,7 +311,6 @@ class SearchBar extends React.Component {
           </form>
         </div>
         {this.renderSideBar()}
-        {console.log("BARS", this.state.bars)}
         {this.state.submitted && this.renderResults()}
       </div>
       
