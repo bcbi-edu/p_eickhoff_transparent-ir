@@ -4,9 +4,11 @@ var app = express();
 var path=require('path');
 var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient
+var cors = require('cors')
+
 app.use(bodyParser.json()); // <--- Here
 app.use(bodyParser.urlencoded({extended: true}));
-
+app.use(cors())
 const port = process.env.PORT || 9000;
 var url ='mongodb://jeromer241:ILikeFru1ts@ds131954.mlab.com:31954/research';
 
@@ -19,6 +21,19 @@ function uuidv4() {
     return v.toString(16);
   });
 }
+
+//CORS
+// app.use(function(req, res, next) {
+//   var allowedOrigins = ['http://www.localhost:9000'];
+//   var origin = req.headers.origin;
+//   if(allowedOrigins.indexOf(origin) > -1){
+//        res.setHeader('Access-Control-Allow-Origin', origin);
+//   }
+//   res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+//   res.header('Access-Control-Allow-Credentials', true);
+//   return next();
+// });
 
 app.use(express.static(path.join(__dirname, 'build')));
 

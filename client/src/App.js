@@ -12,7 +12,7 @@ function uuidv4() {
 
 function getParameterByName(name, url) {
   if (!url) url = window.location.href;
-  name = name.replace(/[\[\]]/g, '\\$&');
+  name = name.replace(/[\]]/g, '\\$&');
   var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
     results = regex.exec(url);
   if (!results) return null;
@@ -52,7 +52,7 @@ class App extends React.Component {
   }
   getParameterByName(name, url) {
     if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, '\\$&');
+    name = name.replace(/[\]]/g, '\\$&');
     var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
       results = regex.exec(url);
     if (!results) return null;
@@ -93,7 +93,8 @@ class App extends React.Component {
         id: id,
         links: links
       }
-      axios.post(`https://ir-sim.herokuapp.com/links`, body)
+      axios.post(`http://ir-sim.herokuapp.com/links`, body)
+      // axios.post(`localhost:9000/links`, body)
       .then(res => {
       
       window.location = `/verify?id=${id}&time=${diff}&session=${session}`;
