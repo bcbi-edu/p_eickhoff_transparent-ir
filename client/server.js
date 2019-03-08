@@ -149,16 +149,16 @@ app.post('/code', function(req, res){
         db.close();
     });
   });
-  res.redirect('/success/?id='+req.body.id);
+  res.redirect('/success/?sid='+req.body.id);
 })
 
-// app.get('/success', function(req, res) {
-//   res.sendFile(__dirname + '/success.html');
-// })
+app.get('/success', function(req, res) {
+  res.sendFile(__dirname + '/success.html');
+})
 
-// app.get('/experiment/success', function(req, res) {
-//   res.sendFile(__dirname + '/success.html');
-// })
+app.get('/experiment/success', function(req, res) {
+  res.sendFile(__dirname + '/success.html');
+})
 
 app.post('/links', function(req, res){
   // console.log(req.body)
