@@ -91,7 +91,8 @@ class App extends React.Component {
       var session = this.state.session;
       var body = {
         id: id,
-        links: links
+        links: links,
+        session: session
       }
       axios.post(`https://ir-sim.herokuapp.com/links`, body)
       // axios.post(`localhost:9000/links`, body)
