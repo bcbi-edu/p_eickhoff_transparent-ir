@@ -89,6 +89,9 @@ class App extends React.Component {
       var diff = Math.abs(currTime - this.state.startTime)
       var links = Array.from(this.ref.current.state.links);
       var session = this.state.session;
+      if (session === null) {
+        session = 1;
+      }
       var body = {
         id: id,
         links: links,
