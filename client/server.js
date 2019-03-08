@@ -128,7 +128,7 @@ app.post('/success/', function(req, res){
         db.close();
     });
   });
-    res.redirect('/exit-form/?sid=' + req.body.id);
+    res.redirect('/exit-form/?id=' + req.body.id);
   } else {
     var newSession = (Number(req.body.session) + 1).toString();
     res.redirect('/?id=' + req.body.id + '&session=' + newSession + '&correct=' + countCorrect);
