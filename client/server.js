@@ -72,7 +72,15 @@ app.get('/verify', function(req, res){
   res.sendFile(__dirname + '/verify.html');
 })
 
+app.get('/experiment/verify', function(req, res){
+  res.sendFile(__dirname + '/verify.html');
+})
+
 app.get('/exit-form', function(req, res){
+  res.sendFile(__dirname + '/exit-form.html');
+})
+
+app.get('/experiment/exit-form', function(req, res){
   res.sendFile(__dirname + '/exit-form.html');
 })
 
@@ -107,8 +115,7 @@ app.post('/success/', function(req, res){
   // if (req.body["Question 5 goes here"] ==  'answer-1') {
   //   countCorrect++;
   // }
-  if (countCorrect >= 3) {
-    console.log("Number correct", countCorrect);
+  if (countCorrect >= 3 || req.body.session >= 5) {
     MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     var doc = req.body;
@@ -130,6 +137,10 @@ app.post('/success/', function(req, res){
 })
 
 app.get('/success', function(req, res) {
+  res.sendFile(__dirname + '/success.html');
+})
+
+app.get('/experiment/success', function(req, res) {
   res.sendFile(__dirname + '/success.html');
 })
 

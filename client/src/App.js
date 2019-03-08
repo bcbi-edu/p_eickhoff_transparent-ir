@@ -93,7 +93,7 @@ class App extends React.Component {
         id: id,
         links: links
       }
-      axios.post(`http://ir-sim.herokuapp.com/links`, body)
+      axios.post(`https://ir-sim.herokuapp.com/links`, body)
       // axios.post(`localhost:9000/links`, body)
       .then(res => {
       

@@ -149,6 +149,10 @@ class SearchBar extends React.Component {
       <div className="sidebar">
         <Menu width={ '75%' }>
         <ul className="search-results">
+        <li><b>
+        What are the structural and aeroelastic problems associated with flight of high speed aircraft?
+        This includes problems with nozzle design, acoustics, and increasing the mach number.
+        </b></li><br />
           {
             newLinks.map(r => (
               <li key={j++}>
