@@ -136,6 +136,22 @@ app.post('/success/', function(req, res){
 
 })
 
+app.post('/code', function(req, res){
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    var doc = req.body;
+    // insert document to 'users' collection using insertOne
+    db.collection("responses").insertOne(doc, function(err, res) {
+        if (err) throw err;
+        console.log(doc);
+        console.log("Document inserted");
+        // close the connection to db when you are done with it
+        db.close();
+    });
+  });
+  res.sendFile(__dirname + '/success.html');
+})
+
 app.get('/success', function(req, res) {
   res.sendFile(__dirname + '/success.html');
 })
