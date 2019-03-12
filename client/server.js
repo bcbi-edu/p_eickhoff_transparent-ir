@@ -87,18 +87,6 @@ app.get('/experiment/exit-form', function(req, res){
 //from verify to exit form
 app.post('/success/', function(req, res){
   console.log(req.body)
-  // MongoClient.connect(url, function(err, db) {
-  //   if (err) throw err;
-  //   var doc = req.body;
-  //   // insert document to 'users' collection using insertOne
-  //   db.collection("responses").insertOne(doc, function(err, res) {
-  //       if (err) throw err;
-  //       console.log(doc);
-  //       console.log("Document inserted");
-  //       // close the connection to db when you are done with it
-  //       db.close();
-  //   });
-// });
   var countCorrect = 0;
   if (req.body["Question 1 goes here"] ==  'answer-1') {
     countCorrect++;
@@ -115,8 +103,7 @@ app.post('/success/', function(req, res){
   // if (req.body["Question 5 goes here"] ==  'answer-1') {
   //   countCorrect++;
   // }
-  if (countCorrect >= 3 || req.body.session >= 5) {
-    MongoClient.connect(url, function(err, db) {
+  MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     var doc = req.body;
     // insert document to 'users' collection using insertOne
@@ -128,6 +115,8 @@ app.post('/success/', function(req, res){
         db.close();
     });
   });
+  if (countCorrect >= 3) {
+    
     res.redirect('/exit-form/?id=' + req.body.id);
   } else {
     var newSession = (Number(req.body.session) + 1).toString();

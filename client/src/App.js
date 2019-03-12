@@ -83,11 +83,12 @@ class App extends React.Component {
     //   }
     // })
 
-    if (window.confirm("Are you finished with the study? (After you hit confirm, you are not allowed to return back to this page)")) {
+    if (window.confirm("Have you starred documents you found relevant?") && window.confirm("Are you finished with the study? (After you hit confirm, you are not allowed to return back to this page)")) {
       var id = this.state.id;
       var currTime = new Date();
       var diff = Math.abs(currTime - this.state.startTime)
       var links = Array.from(this.ref.current.state.links);
+      var queries = Array.from(this.ref.current.state.queries)
       var session = this.state.session;
       if (session === null) {
         session = 1;
@@ -95,7 +96,8 @@ class App extends React.Component {
       var body = {
         id: id,
         links: links,
-        session: session
+        session: session,
+        queries: queries
       }
       axios.post(`https://ir-sim.herokuapp.com/links`, body)
       // axios.post(`localhost:9000/links`, body)

@@ -21,6 +21,7 @@ class SearchBar extends React.Component {
       title: "",
       text: "",
       links: new Map(),
+      queries: [],
       bars: true
     };
 
@@ -50,6 +51,8 @@ class SearchBar extends React.Component {
 
   handleSubmit(event) {
     const val = this.state.value;
+    var queries = this.state.queries;
+    queries.push(val);   
     var colors = this.getRandomColor(val)
     axios.get(`https://ir-sim-api.herokuapp.com/search?name=${this.state.value}`)
       .then(res => {
@@ -62,7 +65,8 @@ class SearchBar extends React.Component {
           colors: colors,
           lastQuery: val,
           isResults: true,
-          desc: ""
+          desc: "",
+          queries: queries
         });
         if (data === {}) {
           this.setState({
