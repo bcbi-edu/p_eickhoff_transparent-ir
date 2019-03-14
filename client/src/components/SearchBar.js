@@ -165,13 +165,15 @@ class SearchBar extends React.Component {
   renderSideBar() {
     var links = this.state.links;
     var newLinks = []
-    for (let [k, v] of links) {
-      newLinks.push({
-        "title": k,
-        "description": v
-      })
+    if (links !== null) {
+      for (let [k, v] of links) {
+        newLinks.push({
+          "title": k,
+          "description": v
+        })
+      }  
     }
-
+    
     var j = 0;
     return (
       <div className="sidebar">
