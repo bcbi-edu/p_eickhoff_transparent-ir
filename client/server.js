@@ -166,6 +166,19 @@ app.post('/links', function(req, res){
   res.sendFile(__dirname + '/exit-form.html');
 })
 
+app.get('/prevLinks', function(req, res){
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    db.collection("links").find({"session": req.body.session, "id": req.body.id})
+    .toArray(function(err, result) {
+      if (err) throw err;
+      db.close();
+      res.json(result);
+    });
+  });
+  
+})
+
 app.listen(port, () => {
   console.log(`Server listening on port: ${port}`);
 });

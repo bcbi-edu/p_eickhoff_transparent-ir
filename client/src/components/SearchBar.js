@@ -8,6 +8,17 @@ import { Button, Glyphicon } from 'react-bootstrap';
 import { slide as Menu } from 'react-burger-menu'
 // import SideBar from './SideBar';
 
+function getParameterByName(name, url) {
+  if (!url) url = window.location.href;
+  name = name.replace(/[\]]/g, '\\$&');
+  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+    results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
@@ -42,7 +53,20 @@ class SearchBar extends React.Component {
         })
       }
     }
-
+    var session = getParameterByName('session') - 1;
+    var id = getParameterByName('id');
+    if (id !== null) {
+      axios.get("https://ir-sim.herokuapp.com/prevLinks",
+      {
+        "id": id,
+        "session": session.toString()
+      }).then(res => {
+        console.log(res)
+        this.setState({
+          links: res.links
+        })
+      })
+    }
   }
 
   handleChange(event) {
