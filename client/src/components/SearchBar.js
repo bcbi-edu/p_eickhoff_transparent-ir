@@ -57,7 +57,7 @@ class SearchBar extends React.Component {
     var id = getParameterByName('id');
     console.log(session.toString(), id)
     if (id !== null) {
-      axios.get(`localhost:9000/prevLinks?id=${id}&session=${session}`)
+      axios.get(`https://ir-sim-api.herokuapp.com/prevLinks?id=${id}&session=${session}`)
       .then(res => {
         console.log(res.data[0])
         if (res.data[0].links !== null) {
