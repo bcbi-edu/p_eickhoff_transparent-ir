@@ -55,14 +55,17 @@ class SearchBar extends React.Component {
     }
     var session = (getParameterByName('session') - 1).toString();
     var id = getParameterByName('id');
-    console.log(session.toString(), id)
     if (id !== null) {
-      axios.get(`https://ir-sim-api.herokuapp.com/prevLinks?id=${id}&session=${session}`)
+      axios.get(`https://ir-sim.herokuapp.com/prevLinks?id=${id}&session=${session}`)
       .then(res => {
-        console.log(res.data[0])
-        if (res.data[0].links !== null) {
+        if (res.data !== null) {
+          var links = res.data !== [] ? res.data[0].links : []
+          var linkMap = new Map();
+          for (var i=0; i<links.length; i++) {
+            linkMap.set(links[i][0], links[i][1])
+          }
           this.setState({ 
-            links: res.data[0].links
+            links: linkMap
           });
         }
       })
