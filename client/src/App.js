@@ -61,29 +61,33 @@ class App extends React.Component {
   }
 
   handleClick(event) {
-    if (window.confirm("Have you starred documents you found relevant?") && window.confirm("Are you finished with the study? (After you hit confirm, you are not allowed to return back to this page)")) {
-      var id = this.state.id;
-      var currTime = new Date();
-      var diff = Math.abs(currTime - this.state.startTime)
-      var links = Array.from(this.ref.current.state.links);
-      var queries = Array.from(this.ref.current.state.queries)
-      var session = this.state.session;
-      if (session === null) {
-        session = 1;
+    if(window.confirm("WARNING: The queries you search for, links you favorite, and time it takes for you to complete the experiment are all recorded. If it appears that you have not made an honest attempt at the experiment, your experiment will be rejected.")) {
+      if (window.confirm("Have you starred documents you found relevant?") && window.confirm("Are you finished with the study? (After you hit confirm, you are not allowed to return back to this page)")) {
+        var id = this.state.id;
+        var currTime = new Date();
+        var diff = Math.abs(currTime - this.state.startTime)
+        var links = Array.from(this.ref.current.state.links);
+        var queries = Array.from(this.ref.current.state.queries)
+        var session = this.state.session;
+        if (session === null) {
+          session = 1;
+        }
+        var body = {
+          id: id,
+          links: links,
+          session: session,
+          queries: queries,
+          time: diff
+        }
+        axios.post(`https://ir-sim.herokuapp.com/links`, body)
+        // axios.post(`localhost:9000/links`, body)
+        .then(res => {
+        
+        window.location = `/verify?id=${id}&time=${diff}&session=${session}`;
+        })
       }
-      var body = {
-        id: id,
-        links: links,
-        session: session,
-        queries: queries
-      }
-      axios.post(`https://ir-sim.herokuapp.com/links`, body)
-      // axios.post(`localhost:9000/links`, body)
-      .then(res => {
-      
-      window.location = `/verify?id=${id}&time=${diff}&session=${session}`;
-      })
     }
+    
     
     event.preventDefault();
   }

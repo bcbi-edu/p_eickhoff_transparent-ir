@@ -169,8 +169,11 @@ app.post('/links', function(req, res){
 app.get('/prevLinks', function(req, res){
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
-    db.collection("links").find({"session": req.query.session, "id": req.query.id})
+    // db.collection("links").find({"session": req.query.session, "id": req.query.id})
+    db.collection("links").find({"id": req.query.id, "session": parseInt(req.query.session)})
     .toArray(function(err, result) {
+      console.log({"session": req.query.session, "id": req.query.id})
+      console.log(result)
       if (err) throw err;
       db.close();
       res.json(result);
