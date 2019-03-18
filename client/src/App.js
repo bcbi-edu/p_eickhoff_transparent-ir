@@ -98,7 +98,7 @@ class App extends React.Component {
       <div className="app">
         <h1 className="title">Search Engine</h1>
         <button onClick={this.handleClick}>Finished with Study</button>
-        <SearchBar ref={this.ref}/>
+        <SearchBar ref={this.ref} session={this.state.session}/>
       </div>
 
     );

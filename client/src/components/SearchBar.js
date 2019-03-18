@@ -33,7 +33,8 @@ class SearchBar extends React.Component {
       text: "",
       links: new Map(),
       queries: [],
-      bars: true
+      bars: true,
+      session: this.props.session
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -53,14 +54,14 @@ class SearchBar extends React.Component {
         })
       }
     }
-    var oldSession = (getParameterByName('session') - 1).toString();
+    var oldSession = this.state.session - 1;
     var id = getParameterByName('id');
-    console.log(oldSession, id)
     if (id !== null) {
-      axios.get(`https://ir-sim.herokuapp.com/prevLinks?id=${id}&session=${oldSession}`)
+      axios.get(`https://ir-sim.herokuapp.com/prevLinks?session=${this.state.session - 1}&id=${id}`)
       .then(res => {
+        console.log(oldSession, id)
         if (res.data !== null) {
-          console.log(res.data)
+          // console.log(res.data)
           var links = (res.data).length > 0 ? res.data[0].links : []
           var linkMap = new Map();
           for (var i=0; i<links.length; i++) {
