@@ -71,6 +71,8 @@ class App extends React.Component {
         var session = this.state.session;
         if (session === null) {
           session = 1;
+        } else {
+          session = parseInt(session);
         }
         var body = {
           id: id,
