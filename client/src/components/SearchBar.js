@@ -33,6 +33,7 @@ class SearchBar extends React.Component {
       text: "",
       links: new Map(),
       queries: [],
+      views: [],
       bars: true,
       session: this.props.session
     };
@@ -112,11 +113,15 @@ class SearchBar extends React.Component {
     var split = text.split(" . ");
     var title = toTitleCase(split[0]);
     // var title = split[0];
+    var views = this.state.views;
+    views.push(title);
+    console.log(views)
     var description = capitalizeFirstLetter(split.slice(2,-1)).join(". ") + ".";
     this.setState({
       isResults: false,
       title: title,
       text: description,
+      views: views
     })
     event.preventDefault();
   }

@@ -106,6 +106,7 @@ app.post('/success/', function(req, res){
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     var doc = req.body;
+    doc["numCorrect"] = countCorrect;
     // insert document to 'users' collection using insertOne
     db.collection("verify").insertOne(doc, function(err, res) {
         if (err) throw err;
@@ -118,7 +119,11 @@ app.post('/success/', function(req, res){
   if (countCorrect >= 3) {
     
     res.redirect('/exit-form/?id=' + req.body.id);
-  } else {
+  }
+  else if (countCorrect < 3 && req.body.session == 3) {
+    res.sendFile(__dirname + '/failure.html')
+  }
+  else {
     var newSession = (Number(req.body.session) + 1).toString();
     res.redirect('/?id=' + req.body.id + '&session=' + newSession + '&correct=' + countCorrect);
   }
@@ -163,7 +168,7 @@ app.post('/links', function(req, res){
         db.close();
     });
 });
-  res.sendFile(__dirname + '/exit-form.html');
+res.sendFile(__dirname + '/failure.html');
 })
 
 app.get('/prevLinks', function(req, res){

@@ -68,6 +68,7 @@ class App extends React.Component {
         var diff = Math.abs(currTime - this.state.startTime)
         var links = Array.from(this.ref.current.state.links);
         var queries = Array.from(this.ref.current.state.queries)
+        var views = Array.from(this.ref.current.state.views)
         var session = this.state.session;
         if (session === null) {
           session = 1;
@@ -79,6 +80,7 @@ class App extends React.Component {
           links: links,
           session: session,
           queries: queries,
+          views: views,
           time: diff
         }
         axios.post(`https://ir-sim.herokuapp.com/links`, body)
