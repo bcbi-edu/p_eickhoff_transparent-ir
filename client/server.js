@@ -125,7 +125,7 @@ app.post('/success/', function(req, res){
   }
   else {
     var newSession = (Number(req.body.session) + 1).toString();
-    res.redirect('/?id=' + req.body.id + '&session=' + newSession + '&correct=' + countCorrect);
+    res.redirect('experiment/?id=' + req.body.id + '&session=' + newSession + '&correct=' + countCorrect);
   }
 
 })
