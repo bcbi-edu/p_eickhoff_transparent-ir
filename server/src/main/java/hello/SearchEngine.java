@@ -73,6 +73,7 @@ public class SearchEngine {
         }
         int hitsPerPage = 50;
         try {
+            // System.out.println("MAX: " + reader.maxDoc());
             IndexSearcher searcher = new IndexSearcher(this.reader);
             TopScoreDocCollector collector = TopScoreDocCollector.create(hitsPerPage);
             searcher.search(q, collector);
@@ -89,18 +90,21 @@ public class SearchEngine {
                 HashMap<String, Double> map = new HashMap<>(); 
                 BM25 scorer = new BM25();
                 for (String word : querystr.split(" ")) {
+                    word = word.toLowerCase();
                     if (map.containsKey(word)) {
                         continue;
                     } else if (!this.docFrequencies.containsKey(word)) {
                         map.put(word, 0.0);
                         continue; 
                     }
+                    System.out.println("WORD: " + word);
                     double docFreq = this.docFrequencies.get(word);
                     double fieldLength = content.split(" ").length;
                     double docCount = this.numDocs;
                     double freq = this.getFrequency(content, word);
                     double score = scorer.score(docCount, docFreq, freq, fieldLength, this.averageFieldLength);
                     map.put(word, score);
+                    System.out.println();
                 }
                 toReturn.put(title, map);
                 discriptions.add(d.get("content"));
