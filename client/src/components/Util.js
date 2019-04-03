@@ -4,12 +4,16 @@ function getOptions(id, results) {
         var result = results[i].weights;
         var tot = 0.0;
         for (var key in result) {
-        tot += result[key];
-        tot += Math.abs(Math.round(100*result[key])/100)
-
+          // tot += result[key];
+          tot += Math.abs(Math.round(100*result[key])/100)
+        }
+        if (tot > maxFound) {
+          console.log("RESULT", result)
         }
         maxFound = Math.max(maxFound, tot);
     }
+    console.log("MAX FOUND", maxFound)
+
     
     
     var opts = {
@@ -52,7 +56,7 @@ function getOptions(id, results) {
   
 function getHeight(id) {
     if (id === 0) {
-        return 100;
+        return 150;
     } else {
         return 55;
     }
@@ -68,12 +72,13 @@ function createDataSet(query, weights, colors) {
     if (splitQuery[i] === " " || splitQuery[i] === "") {
       continue;
     }
+    console.log("word", splitQuery[i], weights[splitQuery[i]])
     // console.log("WORD", splitQuery[i]);
     // var lowerKey = key.toLowerCase();
     var lowerKey = splitQuery[i].toLowerCase();
     barData.push({
       label: lowerKey,
-      data: [Math.abs(Math.round(100*weights[splitQuery[i]])/100)],
+      data: [Math.abs(Math.round(100.0*weights[splitQuery[i].toLowerCase()])/100.0)],
       // data: [weights[splitQuery[i]]],
       backgroundColor: [colors[lowerKey]],
       borderColor: ['rgba(0,0,0,0)',],

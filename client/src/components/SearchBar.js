@@ -245,6 +245,7 @@ class SearchBar extends React.Component {
                   <p>{r.description.replace(/(([^\s]+\s\s*){40})(.*)/,"$1…") /* first 50 words*/}</p> 
                 </div>
                 <div className="two">
+                  {console.log(createDataSet(this.state.lastQuery, r.weights,this.state.colors))}
                   <HorizontalBar data={createDataSet(this.state.lastQuery, r.weights,this.state.colors)} options={getOptions(r.id, this.state.data)} width={.1} height={getHeight(r.id)}/>
                 </div>
                 <div className="clear"></div>
