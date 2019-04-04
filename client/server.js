@@ -120,7 +120,7 @@ app.post('/success/', function(req, res){
     
     res.redirect('/exit-form/?id=' + req.body.id);
   }
-  else if (countCorrect < 3 && req.body.session == 3) {
+  else if (countCorrect < 3 && req.body.session >= 4) {
     res.sendFile(__dirname + '/failure.html')
   }
   else {

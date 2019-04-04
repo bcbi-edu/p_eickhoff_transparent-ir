@@ -60,7 +60,6 @@ class SearchBar extends React.Component {
     if (id !== null) {
       axios.get(`https://ir-sim.herokuapp.com/prevLinks?session=${this.state.session - 1}&id=${id}`)
       .then(res => {
-        console.log(oldSession, id)
         if (res.data !== null) {
           // console.log(res.data)
           var links = (res.data).length > 0 ? res.data[0].links : []
@@ -115,7 +114,6 @@ class SearchBar extends React.Component {
     // var title = split[0];
     var views = this.state.views;
     views.push(title);
-    console.log(views)
     var description = capitalizeFirstLetter(split.slice(2,-1)).join(". ") + ".";
     this.setState({
       isResults: false,
@@ -245,8 +243,7 @@ class SearchBar extends React.Component {
                   <p>{r.description.replace(/(([^\s]+\s\s*){40})(.*)/,"$1…") /* first 50 words*/}</p> 
                 </div>
                 <div className="two">
-                  {console.log(createDataSet(this.state.lastQuery, r.weights,this.state.colors))}
-                  <HorizontalBar data={createDataSet(this.state.lastQuery, r.weights,this.state.colors)} options={getOptions(r.id, this.state.data)} width={.1} height={getHeight(r.id)}/>
+                <HorizontalBar data={createDataSet(this.state.lastQuery, r.weights,this.state.colors)} options={getOptions(r.id, this.state.data)} width={.1} height={getHeight(r.id, this.state.lastQuery)}/>
                 </div>
                 <div className="clear"></div>
               </section>   
@@ -304,8 +301,11 @@ class SearchBar extends React.Component {
         weights[w] = Math.abs(Math.round(100*weights[w])/100)
         tot += weights[w];
       }
-      sortable.push([key, tot, descriptions[key_id]]);
-      key_id++;
+      if (tot > 0) {
+        sortable.push([key, tot, descriptions[key_id]]);
+        key_id++;
+      }
+      
     }
 
     //sort based on weights
@@ -337,9 +337,12 @@ class SearchBar extends React.Component {
     var words = splitQuery.split(" ");
     words = [...new Set(words)]; 
     for(var i = 0; i<words.length; i++) {
-      var r = Math.round(Math.random() * 255);
-      var g = Math.round(Math.random() * 255);
-      var b = Math.round(Math.random() * 255);
+      // var r = Math.round(Math.random() * 255);
+      // var g = Math.round(Math.random() * 255);
+      // var b = Math.round(Math.random() * 255);
+      var r = (Math.round(Math.random()* 127) + 127);
+      var g = (Math.round(Math.random()* 127) + 127);
+      var b = (Math.round(Math.random()* 127) + 127);
       dict[words[i]] = 'rgba(' + r + ',' + g + ',' + b + ',1)';
     }
     return dict;
