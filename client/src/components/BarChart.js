@@ -54,7 +54,6 @@ class BarChart extends React.Component {
     }
     
     render() {
-      // console.log("QUERY", this.props.query);
         return (
           <div>
             <HorizontalBar data={this.state.data} options={options} width={.000001} height={75}/>

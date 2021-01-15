@@ -67,8 +67,8 @@
   <div id="panel">
     <div id="prepare" class="container">
       <h3>Exit Survey</h3>
-      <p>All questions are required. Earn a bonus of $1.00 by giving good, 2-3 sentence answers for each question!</p>
-      <form method="post" action="success">
+      <p>All questions are required.</p>
+      <form method="post" action="/code">
         <div class="form-group">
           <div class="form-check">
             <input type="hidden" name="id" value="bar" id="id"/>
@@ -93,6 +93,74 @@
         <div class="form-group">
           <label for="What are the structural and aeroelastic problems associated with flight of high speed aircraft?">What are the structural and aeroelastic problems associated with flight of high speed aircraft?</label>
           <textarea class="form-control" name="What are the structural and aeroelastic problems associated with flight of high speed aircraft?" rows="3" maxlength="2000" required></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label>How old are you?</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="How old are you?" id="18-30" value=18-30 required>
+            <label class="form-check-label" for="18-30">
+              Between 18 to 30 years old
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="How old are you?" id="31-40" value=31-40 required>
+            <label class="form-check-label" for="31-40">
+              Between 31 to 40 years old
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="How old are you?" id="41-50" value=41-50 required>
+            <label class="form-check-label" for="41-50">
+              Between 41 to 50 years old
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="How old are you?" id="51-60" value=51-60 required>
+            <label class="form-check-label" for="51-60">
+              Between 51 to 60 years old
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="How old are you?" id="60+" value=60+ required>
+            <label class="form-check-label" for="60+">
+              Over 60 years old
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>How often do you use a search engine?</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="How often do you use a search engine?" id="Several-times-a-day" value=Several-times-a-day required>
+            <label class="form-check-label" for="Several-times-a-day">
+              Several times a day
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="How often do you use a search engine?" id="Once-a-day" value=Once-a-day required>
+            <label class="form-check-label" for="Once-a-day">
+              Once a day
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="How often do you use a search engine?" id="once-a-week" value=once-a-week required>
+            <label class="form-check-label" for="once-a-week">
+              Once a week
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="How often do you use a search engine?" id="once-a-month" value=once-a-month required>
+            <label class="form-check-label" for="once-a-month">
+              Once a month
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="How often do you use a search engine?" id="less-than-once-a-month" value=less-than-once-a-month required>
+            <label class="form-check-label" for="less-than-once-a-month">
+              Less than once a month
+            </label>
+          </div>
         </div>
 
         <div class="form-group">
@@ -128,7 +196,7 @@
             </label>
           </div>
         </div>
-        
+
         <div class="form-group">
           <label>Transparency in search results made it easier to find relevant documents</label>
           <div class="form-check">
@@ -163,7 +231,7 @@
           </div>
         </div>
 
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label>The visualizations shown provide useful insight into how the results are ranked</label>
           <div class="form-check">
             <input class="form-check-input" type="radio" name="The visualizations shown provide useful insight into how the results are ranked" id="strongly-disagree" value=strongly-disagree required>
@@ -195,7 +263,7 @@
               Strongly Agree
             </label>
           </div>
-        </div>
+        </div> -->
 
         <div class="form-group">
           <label>Finding relevant results to searches was intuitive</label>
@@ -334,7 +402,7 @@
           </div>
         </div>
 
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label>The score of each word in the graphs accurately depict their importance in each document</label>
           <div class="form-check">
             <input class="form-check-input" type="radio" name="The score of each word in the graphs accurately depict their importance in each document" id="strongly-disagree" value=strongly-disagree required>
@@ -366,7 +434,7 @@
               Strongly Agree
             </label>
           </div>
-        </div>
+        </div> -->
 
         <div class="form-group">
           <label>It is clear why a certain result is ranked higher than another results</label>
@@ -434,6 +502,26 @@
               Strongly Agree
             </label>
           </div>
+        </div>
+
+        For the following questions, answer from a scale of 1 to 20 where 1 indicates very low and 20 indicates very high.
+        <div class="form-group">
+          How mentally demanding was the task? <input type="number" name="How mentally demanding was the task?" min="1" max="20">
+        </div>
+        <div class="form-group">
+          How physically demanding was the task? <input type="number" name="How physically demanding was the task?" min="1" max="20">
+        </div>
+        <div class="form-group">
+          How hurried or rushed was the pace of the task? <input type="number" name="How hurried or rushed was the pace of the task?" min="1" max="20">
+        </div>
+        <div class="form-group">
+          How successful were you in accomplishing what you were asked to do?  <input type="number" name="How successful were you in accomplishing what you were asked to do?" min="1" max="20">
+        </div>
+        <div class="form-group">
+          How hard did you have to work to accomplish your level of performance?  <input type="number" name="How hard did you have to work to accomplish your level of performance?" min="1" max="20">
+        </div>
+        <div class="form-group">
+          How insecure, discouraged, irritated, stressed, and annoyed were you?  <input type="number" name="How insecure, discouraged, irritated, stressed, and annoyed were you?" min="1" max="20">
         </div>
 
         <div class="form-group">

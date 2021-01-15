@@ -1,3 +1,2 @@
 https://github.com/heroku/heroku-buildpack-nginx
-server=https://github.com/heroku/heroku-buildpack-gradle
 client=https://github.com/heroku/heroku-buildpack-nodejs
