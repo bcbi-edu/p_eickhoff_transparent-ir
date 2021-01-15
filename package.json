@@ -9,7 +9,7 @@
   "dependencies": {
     "@material-ui/core": "^3.2.0",
     "ajv": "^6.5.4",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "chart.js": "^2.7.3",
     "cors": "^2.8.5",
     "http-proxy": "^1.17.0",
